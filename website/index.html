@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script defer src="./api-client.js"></script>
+    <script defer src="./index.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body onload="getData()">
+    <div class="container">
+      <h1>ToDolist</h1>
+      <div class="input-row">
+        <label for="addTask"></label> <input type="text" id="addTaskInput" />
+
+        <button class="newtodo">Add Task</button>
+      </div>
+      <div class="container-todolist">
+        <ul id="todolist" class="myul"></ul>
+      </div>
+    </div>
+  </body>
+</html>
