@@ -52,17 +52,29 @@ function createNewTodo() {
   getData();
 }
 
-const updateTask = function (id) {
+const updateTask = function (id, state) {
   try {
-    const response = fetch(baseUrl + id, {
-      method: "PUT",
-      body: JSON.stringify({
-        done: "true",
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    if (state) {
+      const response = fetch(baseUrl + id, {
+        method: "PUT",
+        body: JSON.stringify({
+          done: "true",
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    } else {
+      const response = fetch(baseUrl + id, {
+        method: "PUT",
+        body: JSON.stringify({
+          done: "false",
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    }
     console.log("update request: ", response);
     getData();
   } catch (err) {

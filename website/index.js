@@ -16,15 +16,23 @@ function pushTodolist2Dom(data) {
     const checkBox = document.createElement("input");
     if (todo.done) {
       li.style.textDecoration = "line-through";
+      checkBox.checked = true;
     }
     img.addEventListener("click", function handleClick(event) {
       let tempNode = event.target.parentNode;
       deleteTask(tempNode.parentNode.id);
     });
     checkBox.addEventListener("click", function handleClick(event) {
-      console.log(event);
-      li.style.textDecoration = "line-through";
-      checkBox.checked = true;
+      let tempNode = event.target.parentNode;
+      // li.style.textDecoration = "line-through"
+      //   ? (li.style.textDecoration = "line-through")
+      //   : (li.style.textDecoration = "");
+
+      checkBox.checked
+        ? (li.style.textDecoration = "line-through")
+        : (li.style.textDecoration = "");
+
+      updateTask(tempNode.id, checkBox.checked);
     });
 
     checkBox.type = "checkbox";
