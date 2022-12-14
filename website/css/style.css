@@ -17,7 +17,9 @@ h1 {
   letter-spacing: 5px;
 }
 li {
-  padding: 16px;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
   font-size: 27px;
   letter-spacing: 1.5px;
 }
@@ -45,12 +47,23 @@ li {
   list-style: none;
   font-weight: 800;
 }
+input[type="checkbox"]:checked {
+  accent-color: green;
+}
 
 .checkbox {
-  position: absolute;
   height: 20px;
-  left: 25%;
+
+  width: 20px;
+
   margin-right: 1.5rem;
+  margin-top: 0.5rem;
+}
+.checkbox::checked {
+  /* position: absolute; */
+
+  color: green;
+  /* margin-right: 1.5rem; */
 }
 
 input {

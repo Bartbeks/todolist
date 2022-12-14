@@ -16,8 +16,17 @@ function pushTodolist2Dom(data) {
     const checkBox = document.createElement("input");
     if (todo.done) {
       li.style.textDecoration = "line-through";
-      checkBox.checked = true;
     }
+    img.addEventListener("click", function handleClick(event) {
+      let tempNode = event.target.parentNode;
+      deleteTask(tempNode.parentNode.id);
+    });
+    checkBox.addEventListener("click", function handleClick(event) {
+      console.log(event);
+      li.style.textDecoration = "line-through";
+      checkBox.checked = true;
+    });
+
     checkBox.type = "checkbox";
     checkBox.className = "checkbox";
     img.className = "trashbin";
@@ -29,7 +38,8 @@ function pushTodolist2Dom(data) {
 
     li.textContent = todo.description;
     icon.className = "icon";
-    li.appendChild(checkBox);
+    li.insertBefore(checkBox, li.firstChild);
+    // li.appendChild(checkBox);
     icon.appendChild(img);
 
     li.appendChild(icon);
@@ -37,23 +47,6 @@ function pushTodolist2Dom(data) {
     myUL.appendChild(li);
   });
 }
-
-// delete element
-document.addEventListener("click", function (e) {
-  const isTrashBin = e.target.matches(".trashbin");
-  const isChecked = e.target.matches(".checkbox");
-
-  if (isTrashBin) {
-    const trashBin = document.querySelector(".trashbin");
-    let trashBinParent = trashBin.parentNode;
-    let selectedItem = trashBinParent.parentNode;
-    deleteTask(selectedItem.id);
-  }
-
-  if (isChecked) {
-    updateTask(e.target.parentNode.id);
-  }
-});
 
 function removeEntriesFromTheDom() {
   const HtmlEl = document.getElementById("todolist");
